@@ -1,0 +1,3 @@
+mov eax, [ebx+4*ecx] ; This instruction could cause an access violation if the address calculated by ebx+4*ecx is outside the valid memory range.  This often happens if ecx is unexpectedly large or ebx points to an invalid memory location. 
+
+mov eax, dword ptr [ebx+4*ecx] ;This is slightly safer because it explicitly states that we're accessing a DWORD (4 bytes). This can be helpful to the compiler and debugger, but doesn't eliminate the underlying problem.
